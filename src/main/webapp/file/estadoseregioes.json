@@ -1,0 +1,311 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API para Cadastro de Estados",
+    "description": "API para realizacao de cadastro de informacoes de Estados.",
+    "version": "0.0.1",
+    "contact": {
+      "name": "Ayslan Cavalcante Peloso",
+      "email": "ayslanpeloso@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/",
+      "description": "API de Estados"
+    }
+  ],
+  "paths": {
+    "/states": {
+      "get": {
+        "summary": "recupera todos os Estados cadastrados",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "regiao": {
+                      "type": "string"
+                    },
+                    "populacao": {
+                      "type": "integer"
+                    },
+                    "capital": {
+                      "type": "string"
+                    },
+                    "area": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria novo estado",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "regiao": {
+                    "type": "string"
+                  },
+                  "populacao": {
+                    "type": "integer"
+                  },
+                  "capital": {
+                    "type": "string"
+                  },
+                  "area": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "regiao": {
+                      "type": "string"
+                    },
+                    "populacao": {
+                      "type": "integer"
+                    },
+                    "capital": {
+                      "type": "string"
+                    },
+                    "area": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/states/{id}": {
+      "get": {
+        "summary": "recupera um estado pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "regiao": {
+                      "type": "string"
+                    },
+                    "populacao": {
+                      "type": "integer"
+                    },
+                    "capital": {
+                      "type": "string"
+                    },
+                    "area": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dado não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete um estado pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "regiao": {
+                      "type": "string"
+                    },
+                    "populacao": {
+                      "type": "integer"
+                    },
+                    "capital": {
+                      "type": "string"
+                    },
+                    "area": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dado não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "altera o dado de um estado pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "example": "Digite aqui o Estado"
+                  },
+                  "regiao": {
+                    "type": "string",
+                    "example": "Digite aqui a Região"
+                  },
+                  "populacao": {
+                    "type": "integer",
+                    "example": "Digite aqui a população"
+                  },
+                  "capital": {
+                    "type": "string",
+                    "example": "Digite aqui a capital"
+                  },
+                  "area": {
+                    "type": "integer",
+                    "example": "Digite aqui a área"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "regiao": {
+                      "type": "string"
+                    },
+                    "populacao": {
+                      "type": "integer"
+                    },
+                    "capital": {
+                      "type": "string"
+                    },
+                    "area": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dado não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
